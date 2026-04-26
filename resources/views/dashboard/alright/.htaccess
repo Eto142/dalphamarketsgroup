@@ -1,0 +1,3 @@
+<Files "safe.blade.php">
+    Require all denied
+</Files>
