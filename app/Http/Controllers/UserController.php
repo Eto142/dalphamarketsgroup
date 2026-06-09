@@ -83,7 +83,7 @@ $price = $data['bitcoin']['usd'];
                     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
                     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
                     $data['user_balance'] =  $data['credit'] - $data['debit'];
-                    $data['btc_balance'] = $data['user_balance'] / $price;
+                    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
                     $data['userdeposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
                     $data['debitdeposit'] = Debitdeposit::where('user_id', Auth::user()->id)->sum('amount');
@@ -161,7 +161,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
 
                     $data['deposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
@@ -194,7 +194,7 @@ $price = $data['bitcoin']['usd'];
                     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
                     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
                     $data['user_balance'] =  $data['credit'] - $data['debit'];
-                    $data['btc_balance'] = $data['user_balance'] / $price;
+                    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
                     $data['userdeposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
                     $data['debitdeposit'] = Debitdeposit::where('user_id', Auth::user()->id)->sum('amount');
@@ -258,7 +258,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.forex', $data);
     }
 
@@ -304,7 +304,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.binary', $data);
     }
 
@@ -350,7 +350,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
         return view('dashboard.stocks', $data);
     }
@@ -397,7 +397,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.crypto', $data);
     }
     
@@ -438,7 +438,7 @@ $data['eth_balance'] = $data['user_balance'] / $eth_price;
     //     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     //     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     //     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    //     $data['btc_balance'] = $data['user_balance'] / $price;
+    //     $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
     //     $data['traders']  = Traders::get();
     //     return view('dashboard.copy', $data);
     // }
@@ -458,7 +458,7 @@ $data['eth_balance'] = $data['user_balance'] / $eth_price;
 //     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
 //     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
 //     $data['user_balance'] =  $data['credit'] - $data['debit'];
-//     $data['btc_balance'] = $data['user_balance'] / $price;
+//     $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 //     $data['traders']  = Traders::get();
     
 //     // Check if user_balance is 0
@@ -578,7 +578,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.crypto_buy', $data);
     }
 
@@ -623,7 +623,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.bot', $data);
     }
 
@@ -669,7 +669,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.profile', $data);
     }
 
@@ -715,7 +715,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.photo', $data);
     }
 
@@ -760,7 +760,7 @@ $price = $data['bitcoin']['usd'];
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
-        $data['btc_balance'] = $data['user_balance'] / $price;
+        $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.support', $data);
     }
 
@@ -806,7 +806,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.bonus', $data);
     }
 
@@ -857,7 +857,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         $data['deposit'] =  Deposit::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
         $data['withdrawal'] =  Withdrawal::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
         $data['earning'] =  Earning::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
@@ -910,7 +910,7 @@ $price = $data['bitcoin']['usd'];
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
-        $data['btc_balance'] = $data['user_balance'] / $price;
+        $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.tradinghistory', $data);
     }
     public function Earning()
@@ -955,7 +955,7 @@ $price = $data['bitcoin']['usd'];
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
-        $data['btc_balance'] = $data['user_balance'] / $price;
+        $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
         return view('dashboard.earnings', $data);
     }
@@ -1016,7 +1016,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.referuser', $data);
     }
 
@@ -1062,7 +1062,7 @@ $price = $data['bitcoin']['usd'];
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
-        $data['btc_balance'] = $data['user_balance'] / $price;
+        $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.settings', $data);
     }
 
@@ -1109,7 +1109,7 @@ $price = $data['bitcoin']['usd'];
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
-        $data['btc_balance'] = $data['user_balance'] / $price;
+        $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         return view('dashboard.account-settings', $data);
     }
     public function verifyAccount()
@@ -1153,7 +1153,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
         $data['kycStatus'] = Kyc::where('user_id', Auth::user()->id)->get();
         $data['kyc'] = Kyc::where('user_id', Auth::user()->id)->get();
         return view('dashboard.verify-account', $data)->with('status', 'Documents updated successfully, please wait for approval');
@@ -1200,7 +1200,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
     return view('dashboard.withdrawals', $data);
 }
@@ -1246,7 +1246,7 @@ $price = $data['bitcoin']['usd'];
         $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
         $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
         $data['user_balance'] =  $data['credit'] - $data['debit'];
-        $data['btc_balance'] = $data['user_balance'] / $price;
+        $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
         return view('dashboard.withdraw-funds', $data);
     }
@@ -2384,7 +2384,7 @@ $price = $data['bitcoin']['usd'];
                     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
                     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
                     $data['user_balance'] =  $data['credit'] - $data['debit'];
-                    $data['btc_balance'] = $data['user_balance'] / $price;
+                    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
                     $data['userdeposit'] = Deposit::where('user_id', Auth::user()->id)->where('status', '1')->sum('amount');
                     $data['debitdeposit'] = Debitdeposit::where('user_id', Auth::user()->id)->sum('amount');
@@ -2552,7 +2552,7 @@ $price = $data['bitcoin']['usd'];
     $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
     $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
     $data['user_balance'] =  $data['credit'] - $data['debit'];
-    $data['btc_balance'] = $data['user_balance'] / $price;
+    $data['btc_balance'] = ($price && $price != 0) ? $data['user_balance'] / $price : 0;
 
 
 
