@@ -1474,27 +1474,56 @@ public function getDeposit(Request $request)
   public function getUserWithdrawal(Request $request)
     {
 
-       $client = new Client();
-$response = $client->get('https://api.coingecko.com/api/v3/simple/price', [
-    'query' => [
-        'ids' => 'bitcoin,ethereum',
-        'vs_currencies' => 'usd',
-    ],
-]);
+        $client = new Client();
 
-$data = json_decode($response->getBody(), true);
-$price_btc = $data['bitcoin']['usd'];
-$price_eth = $data['ethereum']['usd'];
+        $price_btc = null;
+        $price_eth = null;
+
+        try {
+            $response = $client->get('https://api.coingecko.com/api/v3/simple/price', [
+                'query' => [
+                    'ids' => 'bitcoin,ethereum',
+                    'vs_currencies' => 'usd',
+                ],
+                'headers' => ['User-Agent' => 'Mozilla/5.0'],
+            ]);
+            $raw = json_decode($response->getBody(), true);
+            if (isset($raw['bitcoin']['usd'])) {
+                $price_btc = $raw['bitcoin']['usd'];
+            }
+            if (isset($raw['ethereum']['usd'])) {
+                $price_eth = $raw['ethereum']['usd'];
+            }
+        } catch (\Exception $e) {
+            try {
+                $btcResponse = $client->get('https://api.coincap.io/v2/assets/bitcoin');
+                $btcRaw = json_decode($btcResponse->getBody(), true);
+                if (isset($btcRaw['data']['priceUsd'])) {
+                    $price_btc = (float) $btcRaw['data']['priceUsd'];
+                }
+            } catch (\Exception $e2) {
+                $price_btc = null;
+            }
+            try {
+                $ethResponse = $client->get('https://api.coincap.io/v2/assets/ethereum');
+                $ethRaw = json_decode($ethResponse->getBody(), true);
+                if (isset($ethRaw['data']['priceUsd'])) {
+                    $price_eth = (float) $ethRaw['data']['priceUsd'];
+                }
+            } catch (\Exception $e3) {
+                $price_eth = null;
+            }
+        }
 
 $data['credit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('credit');
 $data['debit'] = Transaction::where('user_id', Auth::user()->id)->where('status', '1')->sum('debit');
 $data['user_balance'] = $data['credit'] - $data['debit'];
-$data['btc_balance'] = $data['user_balance'] / $price_btc;
+$data['btc_balance'] = ($price_btc && $price_btc != 0) ? $data['user_balance'] / $price_btc : 0;
 
 $amount = $request->input('amount');
 $data['amount'] = $amount;
-$data['btc_amount'] = $data['amount'] / $price_btc;
-$data['eth_amount'] = $data['amount'] / $price_eth;
+$data['btc_amount'] = ($price_btc && $price_btc != 0) ? $data['amount'] / $price_btc : 0;
+$data['eth_amount'] = ($price_eth && $price_eth != 0) ? $data['amount'] / $price_eth : 0;
 $item = $request->input('item');
 $data['item'] = $item;
 
