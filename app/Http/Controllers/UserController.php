@@ -47,20 +47,20 @@ class UserController extends Controller
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -71,7 +71,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -126,20 +126,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -150,7 +150,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -223,20 +223,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -247,7 +247,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -269,20 +269,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -293,7 +293,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -315,20 +315,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -339,7 +339,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -362,20 +362,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -386,7 +386,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -476,20 +476,20 @@ public function copy()
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -500,7 +500,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -543,20 +543,20 @@ if ($user_balance == 0) {
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -567,7 +567,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -588,20 +588,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -612,7 +612,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -634,20 +634,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -658,7 +658,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -680,20 +680,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -704,7 +704,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -725,20 +725,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -749,7 +749,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -771,20 +771,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -795,7 +795,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -822,20 +822,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -846,7 +846,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -875,20 +875,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -899,7 +899,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -920,20 +920,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -944,7 +944,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -981,20 +981,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -1005,7 +1005,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -1027,20 +1027,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -1051,7 +1051,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -1074,20 +1074,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -1098,7 +1098,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -1118,20 +1118,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -1142,7 +1142,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -1166,20 +1166,20 @@ public function withdrawals()
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -1190,7 +1190,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -1211,20 +1211,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -1235,7 +1235,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -2349,20 +2349,20 @@ $priceETH = $data['ethereum']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -2373,7 +2373,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
@@ -2517,20 +2517,20 @@ $price = $data['bitcoin']['usd'];
 $client = new Client();
 
 try {
-    // Try CryptoCompare first
-    $response = $client->get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD', [
+    // Try CoinGecko (free, no API key required)
+    $response = $client->get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', [
         'headers' => [
             'User-Agent' => 'Mozilla/5.0'
         ]
     ]);
     $raw = json_decode($response->getBody(), true);
 
-    if (isset($raw['USD'])) {
-        $data = ['bitcoin' => ['usd' => $raw['USD']]];
+    if (isset($raw['bitcoin']['usd'])) {
+        $data = $raw;
     } else {
-        throw new Exception('CryptoCompare did not return USD price.');
+        throw new \Exception('CoinGecko did not return USD price.');
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     // Fallback to CoinCap API
     try {
         $response = $client->get('https://api.coincap.io/v2/assets/bitcoin');
@@ -2541,7 +2541,7 @@ try {
         } else {
             $data = ['bitcoin' => ['usd' => null]];
         }
-    } catch (Exception $e2) {
+    } catch (\Exception $e2) {
         // Final fallback if both fail
         $data = ['bitcoin' => ['usd' => null]];
     }
